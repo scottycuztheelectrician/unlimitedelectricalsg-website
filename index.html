@@ -1,0 +1,464 @@
+<title>Unlimited Electrical Solutions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Unlimited Electrical Solutions Group Inc. Residential, commercial and industrial electricians serving all five boroughs of New York City. 24/7 emergency service. License #13635. Call 646-530-2347.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,500..900;1,62..125,700..900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: white business-card world. Live lightning canvas behind the whole page; blue + orange chevrons from the card;
+   hero (headline + glowing logo) → scrolling ticker → services → work photos → emergency storm band → steps → area → estimate. */
+:root{
+  color-scheme:light;
+  --white:#ffffff; --paper:#f5f6fc; --ink:#171a45; --muted:#555a82; --line:#dfe2f1;
+  --blue:#3a3d96; --blue-deep:#1f2266; --electric:#4f7dff; --spark:#9cc0ff; --orange:#e15b20; --orange-deep:#c2470f;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font:400 17px/1.6 var(--body);overflow-x:hidden}
+.wrap{position:relative;max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:.98;text-wrap:balance;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.label{display:inline-flex;align-items:center;gap:8px;font:600 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--orange-deep)}
+.label::before{content:"";width:22px;height:3px;background:var(--orange);transform:skewX(-30deg)}
+main,footer,header{position:relative;z-index:1}
+
+/* live storm canvas behind everything */
+#storm{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--white)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:4px;background:linear-gradient(90deg,var(--blue) 0 62%,var(--orange) 62% 66%,var(--blue) 66%)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.brand img{height:46px;width:auto;display:block}
+.wordmark b{display:block;font:900 23px/1 var(--display);font-style:italic;font-stretch:90%;letter-spacing:.02em;color:var(--blue)}
+.wordmark small{display:block;font:600 10.5px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+nav{display:flex;align-items:center;gap:22px}
+nav a.lnk{font-weight:600;font-size:15px;text-decoration:none;color:var(--ink)}
+nav a.lnk:hover{color:var(--blue)}
+.call{position:relative;display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;text-decoration:none;font:800 17px/1 var(--display);font-stretch:90%;padding:12px 18px;border-radius:4px;white-space:nowrap;box-shadow:0 6px 18px -6px rgba(225,91,32,.7)}
+.call::before{content:"";position:absolute;inset:-4px;border-radius:7px;border:2px solid var(--orange);opacity:0;animation:ring 2.4s infinite}
+@keyframes ring{0%{opacity:.7;transform:scale(.96)}70%,100%{opacity:0;transform:scale(1.12)}}
+
+/* hero */
+.hero{position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding-block:64px 80px}
+.hero h1{font-size:clamp(50px,8.4vw,112px);font-weight:900;font-style:italic;font-stretch:78%;text-transform:uppercase;color:var(--blue);margin:18px 0 22px;letter-spacing:-.01em}
+.hero h1 .o{color:var(--orange)}
+.hero h1 .zap{display:inline-block;background:linear-gradient(100deg,var(--blue) 0 40%,var(--electric) 48%,#fff 50%,var(--electric) 52%,var(--blue) 60% 100%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 5s linear infinite}
+@keyframes sheen{0%{background-position:100% 0}60%,100%{background-position:0 0}}
+.lede{font-size:20px;max-width:32em;color:var(--muted);margin:0 0 28px}
+.lede b{color:var(--ink)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;font:800 19px/1 var(--display);font-stretch:90%;text-decoration:none;padding:18px 24px;border-radius:4px;border:2px solid transparent;cursor:pointer}
+.btn.primary{background:var(--blue);color:#fff;box-shadow:0 12px 28px -10px rgba(58,61,150,.8)}
+.btn.primary::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:swipe 3.2s ease-in-out infinite}
+@keyframes swipe{0%,55%{left:-60%}100%{left:130%}}
+.btn.outline{border-color:var(--blue);color:var(--blue);background:#fff}
+.btn.outline:hover{background:var(--paper)}
+.facts{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;padding:0;list-style:none;font:600 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.facts li{display:flex;align-items:center;gap:8px}
+.facts svg{color:var(--orange)}
+
+.logo-stage{position:relative;display:grid;place-items:center;min-width:0;padding:24px}
+.logo-stage::before{content:"";position:absolute;width:88%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(79,125,255,.38),rgba(79,125,255,.12) 45%,transparent 70%);animation:pulse 3s ease-in-out infinite}
+.logo-stage::after{content:"";position:absolute;width:74%;aspect-ratio:1;border-radius:50%;border:2px dashed rgba(58,61,150,.25);animation:spin 40s linear infinite}
+@keyframes pulse{0%,100%{transform:scale(.94);opacity:.75}50%{transform:scale(1.04);opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.logo-stage img{position:relative;width:100%;max-width:470px;height:auto;filter:drop-shadow(0 10px 24px rgba(31,34,102,.25));animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.flash{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 40%,rgba(156,192,255,.55),transparent 60%);opacity:0}
+
+/* ticker */
+.ticker{position:relative;background:var(--blue);color:#fff;overflow:hidden;border-block:4px solid var(--orange)}
+.ticker .track{display:flex;width:max-content;animation:marquee 32s linear infinite}
+.ticker span{display:flex;align-items:center;gap:22px;padding:16px 22px 16px 0;font:900 22px/1 var(--display);font-style:italic;font-stretch:80%;text-transform:uppercase;white-space:nowrap}
+.ticker span i{font-style:normal;color:var(--orange)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+section{padding-block:88px}
+.head{display:grid;gap:14px;margin-bottom:44px;max-width:44em}
+.head h2,.h2{font-size:clamp(38px,5.4vw,66px);font-weight:900;font-style:italic;font-stretch:78%;text-transform:uppercase;color:var(--blue)}
+.head h2 .o,.h2 .o{color:var(--orange)}
+.head p{margin:0;color:var(--muted);font-size:18px}
+
+/* services: mini business cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px 26px 26px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;box-shadow:0 10px 30px -18px rgba(31,34,102,.35)}
+.card::before{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;background:var(--blue);clip-path:polygon(40% 0,100% 0,100% 60%);}
+.card::after{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;background:var(--orange);clip-path:polygon(32% 0,40% 0,100% 60%,100% 68%)}
+.card:hover{transform:translateY(-6px);border-color:var(--electric);box-shadow:0 22px 40px -18px rgba(79,125,255,.6),0 0 0 3px rgba(79,125,255,.15)}
+.card .ic{width:54px;height:54px;border-radius:12px;display:grid;place-items:center;background:var(--paper);color:var(--blue);margin-bottom:18px;transition:background .25s,color .25s}
+.card:hover .ic{background:var(--blue);color:#fff}
+.card:hover .ic svg{animation:jolt .4s steps(2) 2}
+@keyframes jolt{50%{transform:translate(1px,-1px) rotate(-6deg)}}
+.card h3{font-size:27px;font-weight:900;font-style:italic;font-stretch:82%;text-transform:uppercase;color:var(--ink);margin-bottom:8px}
+.card p{margin:0;color:var(--muted);font-size:16px}
+.card.hot{background:var(--blue);border-color:var(--blue);color:#fff}
+.card.hot h3{color:#fff}
+.card.hot p{color:#dfe3ff}
+.card.hot .ic{background:var(--orange);color:#fff}
+.card.hot::before{background:var(--orange)}
+.card.hot::after{background:#fff}
+.card.hot a{display:inline-block;margin-top:14px;font:900 30px/1 var(--display);font-stretch:80%;color:#fff;text-decoration:none;border-bottom:3px solid var(--orange)}
+
+/* work photos */
+.work{background:linear-gradient(180deg,transparent,var(--paper) 18%,var(--paper) 82%,transparent)}
+.shots{display:grid;grid-template-columns:1.45fr 1fr;gap:26px;align-items:stretch}
+.shot{position:relative;margin:0;border-radius:14px;overflow:hidden;background:var(--blue-deep);box-shadow:0 24px 50px -24px rgba(31,34,102,.6);min-width:0}
+.shot img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.shot:hover img{transform:scale(1.05)}
+.shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(23,26,69,.85))}
+.shot figcaption{position:absolute;z-index:1;left:22px;right:22px;bottom:20px;color:#fff}
+.shot figcaption b{display:block;font:900 30px/1 var(--display);font-style:italic;font-stretch:80%;text-transform:uppercase}
+.shot figcaption span{font-size:15px;opacity:.85}
+.shot .chip{position:absolute;z-index:1;top:16px;left:16px;background:var(--orange);color:#fff;font:600 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:8px 10px;border-radius:3px}
+.shot.big{aspect-ratio:681/450}
+.shot.small{aspect-ratio:auto}
+
+/* emergency storm band */
+.storm-band{position:relative;overflow:hidden;background:radial-gradient(ellipse at 30% 0%,#2e3290,var(--blue-deep) 60%,#14164a);color:#fff;padding-block:84px}
+.storm-band canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.storm-band .wrap{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+.storm-band .label{color:var(--spark)}
+.storm-band h2{font-size:clamp(40px,6vw,76px);font-weight:900;font-style:italic;font-stretch:78%;text-transform:uppercase;margin:14px 0 10px}
+.storm-band p{margin:0;font-size:19px;color:#d9ddff;max-width:30em}
+.bigcall{display:inline-flex;flex-direction:column;align-items:flex-start;gap:6px;background:var(--orange);color:#fff;text-decoration:none;padding:22px 30px;border-radius:8px;box-shadow:0 0 0 0 rgba(225,91,32,.7);animation:beacon 2s infinite}
+.bigcall small{font:600 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+.bigcall b{font:900 clamp(34px,4.6vw,52px)/1 var(--display);font-stretch:78%;user-select:all;font-variant-numeric:tabular-nums}
+@keyframes beacon{0%{box-shadow:0 0 0 0 rgba(225,91,32,.65)}70%{box-shadow:0 0 0 22px rgba(225,91,32,0)}100%{box-shadow:0 0 0 0 rgba(225,91,32,0)}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
+.step{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:30px 26px;box-shadow:0 10px 30px -20px rgba(31,34,102,.35)}
+.step .n{font:900 64px/1 var(--display);font-style:italic;font-stretch:75%;color:transparent;-webkit-text-stroke:2px var(--blue);opacity:.55}
+.step h3{font-size:28px;font-weight:900;font-style:italic;font-stretch:82%;text-transform:uppercase;margin:10px 0 8px}
+.step p{margin:0;color:var(--muted)}
+.step:not(:last-child)::after{content:"";position:absolute;right:-22px;top:50%;width:22px;height:3px;background:var(--orange)}
+
+/* area */
+.area .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center}
+.hoods{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.hoods li{border:1.5px solid var(--line);border-radius:999px;padding:9px 16px;font-weight:600;font-size:15px;background:#fff;transition:border-color .2s,color .2s,transform .2s}
+.hoods li:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+.hoods li.home{background:var(--blue);color:#fff;border-color:var(--blue)}
+.boroughs{gap:14px}
+.boroughs li{font:900 clamp(24px,3vw,34px)/1 var(--display);font-style:italic;font-stretch:80%;text-transform:uppercase;padding:18px 26px;border-radius:10px;border-width:2px}
+
+/* estimate */
+.est .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+.bigphone{display:block;font:900 clamp(44px,6.4vw,74px)/1 var(--display);font-style:italic;font-stretch:76%;color:var(--orange);margin:16px 0 6px;user-select:all;font-variant-numeric:tabular-nums;text-decoration:none}
+.contact-list{display:grid;gap:16px;margin-top:26px}
+.contact-list div{display:grid;gap:3px}
+.contact-list .k{font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+form{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:32px;display:grid;gap:16px;box-shadow:0 30px 60px -30px rgba(31,34,102,.45);overflow:hidden}
+form::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,var(--blue) 0 70%,var(--orange) 70% 74%,var(--blue) 74%)}
+form h3{font-size:30px;font-weight:900;font-style:italic;font-stretch:80%;text-transform:uppercase;color:var(--blue)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:grid;gap:6px;font-weight:600;font-size:14px}
+input,select,textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:6px;padding:13px;width:100%;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--electric);box-shadow:0 0 0 4px rgba(79,125,255,.18)}
+textarea{min-height:110px;resize:vertical}
+form .btn{justify-self:start}
+.sent{background:var(--paper);border-left:4px solid var(--orange);padding:14px 16px;border-radius:4px;font-size:15px}
+
+footer{background:var(--blue-deep);color:#e6e8ff;border-top:5px solid var(--orange)}
+footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px;padding-block:40px}
+footer .logo-chip{background:#fff;border-radius:10px;padding:10px 14px;display:block}
+footer .logo-chip img{height:96px;width:auto;display:block}
+footer .info{display:grid;gap:6px;font-size:15px}
+footer small{font-size:12px;opacity:.65}
+
+@media (max-width:980px){ nav a.lnk{display:none} .cards{grid-template-columns:1fr 1fr} }
+@media (max-width:860px){
+  .hero .wrap,.area .wrap,.est .wrap,.storm-band .wrap{grid-template-columns:1fr}
+  .hero .wrap{padding-block:40px 56px;gap:8px}
+  .logo-stage{order:-1;max-width:340px;margin:0 auto;padding:8px}
+  .shots{grid-template-columns:1fr}
+  .shot.small{aspect-ratio:350/299}
+  .steps{grid-template-columns:1fr}
+  .step:not(:last-child)::after{display:none}
+}
+@media (max-width:560px){
+  .cards{grid-template-columns:1fr}
+  .wordmark small{display:none}
+  .brand img{height:38px}
+  .call span{display:none}
+  .row{grid-template-columns:1fr}
+  section{padding-block:60px}
+  form{padding:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+
+<canvas id="storm" aria-hidden="true"></canvas>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Unlimited Electrical Solutions Group home">
+      <img src="uesg-emblem.png" alt="" width="400" height="265">
+      <span class="wordmark"><b>UNLIMITED</b><small>Electrical Solutions Group</small></span>
+    </a>
+    <nav>
+      <a class="lnk" href="#services">Services</a>
+      <a class="lnk" href="#work">Our work</a>
+      <a class="lnk" href="#area">Service area</a>
+      <a class="call" href="tel:+16465302347"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></svg><span>646-530-2347</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <span class="label">New York, New York · Licensed #13635</span>
+        <h1><span class="zap">Unlimited</span> power.<br><span class="o">One call</span> away.</h1>
+        <p class="lede">Residential, commercial and industrial electrical work across New York City. <b>Emergency service 24/7.</b> Free estimates, clear prices, work done right the first time.</p>
+        <div class="ctas">
+          <a class="btn primary" href="#estimate"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>Get a free estimate</a>
+          <a class="btn outline" href="tel:+16465302347">Call 646-530-2347</a>
+        </div>
+        <ul class="facts">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>24/7 emergency</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>License #13635</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>Free estimates</li>
+        </ul>
+      </div>
+      <div class="logo-stage">
+        <img src="uesg-logo.png" alt="Unlimited Electrical Solutions Group Inc. logo" width="640" height="571">
+        <div class="flash" id="logo-flash"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="track">
+      <span>24/7 Emergency Service <i>⚡</i> Residential <i>⚡</i> Commercial <i>⚡</i> Industrial <i>⚡</i> Maintenance &amp; Repairs <i>⚡</i> New Installations <i>⚡</i> CCTV &amp; Security <i>⚡</i> License #13635 <i>⚡</i></span>
+      <span>24/7 Emergency Service <i>⚡</i> Residential <i>⚡</i> Commercial <i>⚡</i> Industrial <i>⚡</i> Maintenance &amp; Repairs <i>⚡</i> New Installations <i>⚡</i> CCTV &amp; Security <i>⚡</i> License #13635 <i>⚡</i></span>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head">
+        <span class="label">What we do</span>
+        <h2>Every job. <span class="o">Every building.</span></h2>
+        <p>Homes, stores, offices and industrial spaces across Brooklyn. Don't see your job here? Call and ask.</p>
+      </div>
+      <div class="cards">
+        <article class="card"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M12.5 12 10 16h3l-.5 3"/></svg></div><h3>Residential</h3><p>Outlets, switches, lighting, panels and new circuits for houses, apartments and co-ops.</p></article>
+        <article class="card"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h18l-1.5-5h-15Z"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/></svg></div><h3>Commercial</h3><p>Stores, restaurants and offices. Lighting, equipment power and tenant fit-outs.</p></article>
+        <article class="card"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V10l5 3V10l5 3V6h4l1 14Z"/><path d="M3 20h18"/></svg></div><h3>Industrial</h3><p>Power distribution and equipment wiring for warehouses, shops and plants.</p></article>
+        <article class="card"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.5 2.5-2.4-.6-.6-2.4Z"/></svg></div><h3>Repairs</h3><p>Tripping breakers, dead outlets, flickering lights. We find the cause and fix it fast.</p></article>
+        <article class="card"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h6M9 11h6M9 15h2"/></svg></div><h3>New installations</h3><p>Panels, service upgrades, lighting, fans, appliances and wiring for renovations.</p></article>
+        <article class="card"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l13-3 1 5-13 3Z"/><path d="M16.5 6.5 21 9"/><path d="M8 11.5V16H4"/></svg></div><h3>CCTV &amp; security</h3><p>Security cameras and systems installed and wired for homes and businesses.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="work" id="work">
+    <div class="wrap">
+      <div class="head">
+        <span class="label">Our work</span>
+        <h2>Power rooms <span class="o">to home panels.</span></h2>
+        <p>Clean, organized, built to code. From full commercial electrical rooms to the breaker panel in your basement.</p>
+      </div>
+      <div class="shots">
+        <figure class="shot big"><span class="chip">Commercial</span><img src="panel-1.jpg" alt="Commercial electrical room with panelboards, conduit runs and fire alarm panels" width="681" height="450"><figcaption><b>Electrical rooms</b><span>Panelboards, distribution and neat conduit runs</span></figcaption></figure>
+        <figure class="shot small"><span class="chip">Residential</span><img src="panel-2.jpg" alt="Residential breaker panel with neatly landed wires" width="350" height="299"><figcaption><b>Breaker panels</b><span>Upgrades and clean, labeled installs</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="storm-band" id="emergency">
+    <canvas id="storm2" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div>
+        <span class="label">24/7 emergency service</span>
+        <h2>Lights out? Sparks? <br>We pick up.</h2>
+        <p>Lost power, a burning smell or a breaker that won't reset. Call any time, day or night.</p>
+      </div>
+      <a class="bigcall" href="tel:+16465302347"><small>Call or text now</small><b>646-530-2347</b></a>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="head">
+        <span class="label">How it works</span>
+        <h2>Three steps. <span class="o">No runaround.</span></h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="n">01</div><h3>Call or text</h3><p>Tell us what's going on. Send a photo if you can. We'll tell you if it's urgent.</p></div>
+        <div class="step"><div class="n">02</div><h3>Free estimate</h3><p>We look at the job and give you a clear price before any work starts.</p></div>
+        <div class="step"><div class="n">03</div><h3>Done right</h3><p>We do the work, test everything, and clean up before we leave.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="area" id="area" style="padding-top:0">
+    <div class="wrap">
+      <div class="head" style="margin:0">
+        <span class="label">Service area</span>
+        <h2>All five <span class="o">boroughs.</span></h2>
+        <p>Our shop is on East 17th Street in Brooklyn, and we take jobs all over New York City. Not sure we cover your block? <a href="tel:+16465302347">Call 646-530-2347</a> and ask.</p>
+      </div>
+      <ul class="hoods boroughs">
+        <li class="home">Brooklyn</li><li>Manhattan</li><li>Queens</li><li>The Bronx</li><li>Staten Island</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="est" id="estimate" style="padding-top:0">
+    <div class="wrap">
+      <div>
+        <span class="label">Free estimate</span>
+        <h2 class="h2" style="margin-top:14px">Let's get <span class="o">you powered.</span></h2>
+        <a class="bigphone" href="tel:+16465302347">646-530-2347</a>
+        <div class="contact-list">
+          <div><span class="k">Company</span><span>Unlimited Electrical Solutions Group Inc.<br>Owner: Gjergji Ristollari</span></div>
+          <div><span class="k">Phone</span><a href="tel:+16465302347">646-530-2347</a></div>
+          <div><span class="k">Email</span><a href="mailto:unlimitedelectricalsg@gmail.com">unlimitedelectricalsg@gmail.com</a></div>
+          <div><span class="k">Shop</span><span>2568 East 17th Street, Suite 101<br>Brooklyn, NY 11235</span></div>
+          <div><span class="k">License</span><span>#13635</span></div>
+        </div>
+      </div>
+      <form id="est-form" novalidate>
+        <h3>Request a free estimate</h3>
+        <div class="row">
+          <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
+          <label for="f-phone">Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel" required></label>
+        </div>
+        <div class="row">
+          <label for="f-hood">Neighborhood or ZIP<input id="f-hood" name="area" placeholder="e.g. Midwood, 11230"></label>
+          <label for="f-job">Type of job
+            <select id="f-job" name="job">
+              <option>Repair / not sure</option><option>Emergency</option><option>New installation</option><option>Commercial job</option><option>Industrial job</option><option>CCTV &amp; security</option><option>Something else</option>
+            </select>
+          </label>
+        </div>
+        <label for="f-msg">What's going on?<textarea id="f-msg" name="message" placeholder="Breaker keeps tripping in the kitchen…"></textarea></label>
+        <button class="btn primary" type="submit"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg>Send my request</button>
+        <div class="sent" id="sent" hidden role="status"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo-chip" href="#top" aria-label="Back to top"><img src="uesg-logo.png" alt="Unlimited Electrical Solutions Group Inc. logo" width="640" height="571"></a>
+    <div class="info">
+      <span>2568 East 17th Street, Suite 101, Brooklyn, NY 11235</span>
+      <span><a href="tel:+16465302347">646-530-2347</a> · <a href="mailto:unlimitedelectricalsg@gmail.com">unlimitedelectricalsg@gmail.com</a> · License #13635</span>
+      <small>© 2026 Unlimited Electrical Solutions Group Inc.</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Midpoint-displacement lightning with branches.
+  function bolt(x1, y1, x2, y2, rough, depth) {
+    var segs = [[x1, y1, x2, y2, 1]], off = rough;
+    for (var g = 0; g < depth; g++) {
+      var next = [];
+      for (var i = 0; i < segs.length; i++) {
+        var s = segs[i], mx = (s[0] + s[2]) / 2, my = (s[1] + s[3]) / 2;
+        var dx = s[2] - s[0], dy = s[3] - s[1], len = Math.hypot(dx, dy) || 1;
+        var d = (Math.random() * 2 - 1) * off;
+        mx += -dy / len * d; my += dx / len * d;
+        next.push([s[0], s[1], mx, my, s[4]], [mx, my, s[2], s[3], s[4]]);
+        if (g < 4 && Math.random() < 0.18 && s[4] > 0.3) {
+          var ang = Math.atan2(dy, dx) + (Math.random() < 0.5 ? -1 : 1) * (0.4 + Math.random() * 0.5);
+          var bl = len * (0.5 + Math.random() * 0.6);
+          next.push([mx, my, mx + Math.cos(ang) * bl, my + Math.sin(ang) * bl, s[4] * 0.45]);
+        }
+      }
+      segs = next; off /= 2;
+    }
+    return segs;
+  }
+
+  function Storm(canvas, opt) {
+    var ctx = canvas.getContext('2d'), bolts = [], w = 0, h = 0, dpr = 1, flash = 0;
+    function size() {
+      var r = canvas.getBoundingClientRect(); dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = r.width; h = r.height; canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function strike() {
+      if (!w) return;
+      var fromTop = Math.random() < 0.65, x1, y1, x2, y2;
+      if (fromTop) { x1 = Math.random() * w; y1 = -10; x2 = x1 + (Math.random() - 0.5) * w * 0.5; y2 = h * (0.45 + Math.random() * 0.6); }
+      else { var left = Math.random() < 0.5; x1 = left ? -10 : w + 10; y1 = Math.random() * h * 0.6; x2 = w * (left ? 0.35 + Math.random() * 0.4 : 0.25 + Math.random() * 0.4); y2 = y1 + (Math.random() - 0.2) * h * 0.5; }
+      var len = Math.hypot(x2 - x1, y2 - y1);
+      bolts.push({ segs: bolt(x1, y1, x2, y2, len * 0.22, 7), t: 0, life: 520 + Math.random() * 380 });
+      flash = opt.flash;
+      if (opt.onStrike) opt.onStrike();
+    }
+    function draw(seg, a) {
+      for (var p = 0; p < 3; p++) {
+        ctx.beginPath();
+        for (var i = 0; i < seg.length; i++) { var s = seg[i]; if (p === 2 && s[4] < 0.5) continue; ctx.moveTo(s[0], s[1]); ctx.lineTo(s[2], s[3]); }
+        if (p === 0) { ctx.strokeStyle = opt.glow.replace('A', (0.35 * a).toFixed(3)); ctx.lineWidth = 10; ctx.shadowBlur = 28; ctx.shadowColor = opt.glow.replace('A', a.toFixed(3)); }
+        else if (p === 1) { ctx.strokeStyle = opt.core.replace('A', a.toFixed(3)); ctx.lineWidth = 2.6; ctx.shadowBlur = 12; }
+        else { ctx.strokeStyle = 'rgba(255,255,255,' + a.toFixed(3) + ')'; ctx.lineWidth = 1; ctx.shadowBlur = 0; }
+        ctx.stroke();
+      }
+    }
+    var last = performance.now(), nextAt = last + 700;
+    function frame(now) {
+      var dt = Math.min(now - last, 60); last = now;
+      if (now > nextAt) { strike(); if (Math.random() < 0.3) setTimeout(strike, 90 + Math.random() * 120); nextAt = now + opt.min + Math.random() * opt.spread; }
+      ctx.clearRect(0, 0, w, h);
+      if (flash > 0.002) { ctx.fillStyle = opt.flashColor.replace('A', flash.toFixed(3)); ctx.fillRect(0, 0, w, h); flash *= 0.86; }
+      ctx.lineCap = 'round';
+      for (var i = bolts.length - 1; i >= 0; i--) {
+        var b = bolts[i]; b.t += dt;
+        var k = b.t / b.life; if (k >= 1) { bolts.splice(i, 1); continue; }
+        var a = k < 0.3 ? (Math.random() < 0.35 ? 0.25 : 1) : (1 - k) / 0.7;
+        draw(b.segs, a * opt.alpha);
+      }
+      requestAnimationFrame(frame);
+    }
+    size(); window.addEventListener('resize', size);
+    if (reduce) { // one still bolt, no motion
+      var s = bolt(w * 0.7, -10, w * 0.55, h * 0.8, h * 0.2, 7); ctx.lineCap = 'round'; draw(s, opt.alpha * 0.5); return;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  var flashEl = document.getElementById('logo-flash');
+  Storm(document.getElementById('storm'), {
+    core: 'rgba(58,61,150,A)', glow: 'rgba(79,125,255,A)', flashColor: 'rgba(156,192,255,A)', flash: 0.10, alpha: 0.85, min: 1400, spread: 2600,
+    onStrike: function () { if (flashEl && flashEl.animate) flashEl.animate([{ opacity: 0.9 }, { opacity: 0 }], { duration: 450, easing: 'ease-out' }); }
+  });
+  Storm(document.getElementById('storm2'), {
+    core: 'rgba(200,220,255,A)', glow: 'rgba(120,160,255,A)', flashColor: 'rgba(140,170,255,A)', flash: 0.22, alpha: 1, min: 900, spread: 1800
+  });
+
+  document.getElementById('est-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('f-name'), phone = document.getElementById('f-phone'), out = document.getElementById('sent');
+    if (!name.value.trim() || !phone.value.trim()) {
+      out.textContent = 'Please add your name and phone number so we can reach you.';
+      out.hidden = false; (name.value.trim() ? phone : name).focus(); return;
+    }
+    // Preview only: the form isn't connected to an inbox yet.
+    out.textContent = 'Thanks, ' + name.value.trim().split(' ')[0] + '. Online requests are being set up. For the fastest answer, call or text 646-530-2347.';
+    out.hidden = false;
+  });
+})();
+</script>
